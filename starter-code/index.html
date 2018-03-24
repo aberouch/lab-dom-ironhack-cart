@@ -17,51 +17,45 @@
     <h1>Ironhack Merchandising shop</h1>
   </header>
 
-  <main>
-    <div class="flexbox">
-      <div>
-          <span>Product Name</span>
+  <main id="main">
+    <div class="flexbox" id="new-product-1">
+      <div id="product-1">
+        <span>Product Name</span>
       </div>
-      <div>
-        <span id="priceValue">24</span>
+      <div id="price-1">
+        <span id="priceValue-1">24</span>
       </div>
-      <div>
-        <label>QTY</label><input id="quantity" value="1000" placeholder="1000">
+      <div id="qty-1">
+        <label>QTY</label><input id="quantity-1" value="" placeholder="0">
       </div>
-      <div>
-        <span id="totalPrice">0</span>
+      <div id="total-1">
+        <span id="totalPrice-1">0</span>
       </div>
-      <div>
+      <div id="delete-1">
         <button class="btn-delete" value="">Delete</button>
       </div>
-
     </div>
 
-    <!--<div class="flexbox">
-        <div>
-            <input>
-        </div>
-        <div>
-            <input>
-        </div>
-        <div>
-          
-        </div>
-        <div>
-          
-        </div>
-        <div>
-          <button class="" value="">Create</button>
-        </div>
-  
-      </div> -->
-
-
-
-
+    <div class="flexbox" id="new-product-2">
+      <div id="product-2">
+        <span>Product Name</span>
+      </div>
+      <div id="price-2">
+        <span id="priceValue-2">24</span>
+      </div>
+      <div id="qty-2">
+        <label>QTY</label><input id="quantity-2" value="" placeholder="0">
+      </div>
+      <div id="total-2">
+        <span id="totalPrice-2">0</span>
+      </div>
+      <div id="delete-2">
+        <button class="btn-delete" value="">Delete</button>
+      </div>
+    </div>
   </main>
   <footer>
-      <button id="calc-prices-button" onClick="getTotalPrice()" >Calculate price</button>
+      <button id="calc-prices-button" onclick="getTotalPrice()" >Calculate price</button>
       <p>Total price</p>
     </footer>
 </body>
