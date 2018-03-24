@@ -53,29 +53,40 @@ function createItemNode(dataType, itemData){
 
 }
 
-function createNewItemRow(itemName, itemUnitPrice){
+function createNewRow(newElementId, parentElementId, elementType, className){
 
+  var newElement = document.createElement(elementType);
+  var parentElement = document.getElementById(parentElementId);
+  
+  if(newElementId != ""){
+    newElement.id = newElementId;
+  }
+  
+  parentElement.appendChild(newElement);
+
+  if(className != ""){
+    newElement.classList.add(className);
+  }
+
+}
+
+function createNewRowElement(elementsArray){
+
+  elementsArray.forEach(function(element){
+    createNewRow(element[0], element[1], element[2], element[3], element[0]);
+  });
 }
 
 function createNewItem(){
 
-  console.log("createNewItem() was called!");
-  var main = document.getElementById("main");
-  console.log("main was found!");
   var findLastContainer = "";
   var i=1;
   var end = 1;
 
-  console.log("i = " + i);
-
   while(end != 0){
     var productName = "new-product-"+i;
 
-    console.log("Enter while");
-
     findLastContainer = document.getElementById(productName);
-
-    console.log("findLastContainer = " + findLastContainer);
 
     if(findLastContainer === null){
       end = 0;
@@ -84,38 +95,23 @@ function createNewItem(){
     }
   }
 
-  console.log("Exit while");
-  
-  var newElement = document.createElement("div");
+  var arrayElements = [
+    //newElementId, parentElementId, elementType, className
+    ["new-product-"+i,"main-list", "div", "flexbox"],
+    ["product-" + i, "new-product-" + i, "div", ""],
+    ["product-name", "product-" + i, "span", ""],
+    ["price-" + i, "new-product-" + i, "div", "min-width-70"],
+    ["price-value", "price-" + i, "span", ""],
+    ["qty-" + i, "new-product-" + i, "div", ""],
+    ["", "qty-" + i, "label", ""],
+    ["quantity-" + i, "qty-" + i, "input", ""],
+    ["total-" + i, "new-product-" + i, "div", "min-width-70"],
+    ["totalPrice-1", "total-" + i, "span", ""],
+    ["delete-" + i, "new-product-" + i, "div", ""],
+    ["", "delete-" + i, "button", "btn-delete"],
+];
 
-  console.log("New Element Created: " + newElement);
-  
-  console.log("i = " + i);
-
-  newElement.id = "new-product-"+i;
-
-  console.log("New Element ID: " + newElement.id);
-  main.appendChild(newElement);
-
-  var newProduct = document.getElementById("new-product-"+i);
-  newProduct.classList.add("flexbox");
-
-
-
-/*   for(var j=0 ; j<5 ; j++){
-    newProduct.appendChild("div");
-  } */
-  
-/*   var product = document.getElementById("product");
-  product.appendChild("span");
-  var price = document.getElementById("price");
-  price.appendChild("span");
-  var qty = document.getElementById("qty");
-  qty.appendChild("label");
-  var total = document.getElementById("total");
-  total.appendChild("span");
-  var deleteBtn = document.getElementById("delete");
-  deleteBtn.appendChild("button"); */
+createNewRowElement(arrayElements)
 
 }
 
