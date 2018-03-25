@@ -1,14 +1,14 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-header{
+header {
   text-align: center;
-  /*background-color: lightgrey; */
 }
 
-.main-content, .footer-content{
+.main-content,
+.footer-content {
   max-width: 1500px;
   margin: auto;
   padding: 0 10%;
@@ -16,12 +16,12 @@ header{
 
 input {
   border: solid 1px black;
-  padding:5px;
+  padding: 5px;
   border-radius: 3px;
   box-sizing: border-box;
 }
 
-button{
+button {
   border: none;
   cursor: pointer;
   color: #fff;
@@ -30,76 +30,44 @@ button{
 }
 
 button:focus {
-  outline:0;
+  outline: 0;
 }
 
-footer{
+footer {
+  text-align: center;
   padding: 20px 0 20px 0;
-  background-color: #e0e0e0;
 }
 
-.btest{
-  border: 1px solid rgb(255, 0, 0);
- /*  border: none; */
+footer p {
+  font-size: 2em;
+  margin-top: 1em;
 }
 
-.text-wrap{
+.text-wrap {
   width: 10em;
   word-wrap: break-word;
 }
 
-.mr-input-product{
+.mr-input-product {
   margin-right: 5%;
 }
 
-.min-width-70{
+.min-width-70 {
   min-width: 70px;
   flex: 0 0 auto;
 }
 
-.container-input-product{
+.container-input-product {
   width: 40%;
 }
 
-.container-input-product input{
+.container-input-product input {
   width: 100%;
 }
 
-/* .btn {
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-} */
-
-/* .btn-success {
-    color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
-} */
-
-/* .quantity {
-  margin: 0 5px;
-} */
-
 .btn-delete {
-    background-color: rgb(161, 25, 34);
-    border: 2px solid rgb(129, 21, 28);
+  background-color: rgb(161, 25, 34);
+  border: 2px solid rgb(129, 21, 28);
 }
 
 .btn-delete:active {
@@ -107,42 +75,42 @@ footer{
   border: 2px solid rgb(136, 18, 26);
 }
 
-.btn-create{
+.btn-create {
   background-color: rgb(17, 115, 139);
-  border:2px solid rgb(6, 80, 80);
+  border: 2px solid rgb(6, 80, 80);
 }
 
-.btn-create:active{
+.btn-create:active {
   background-color: rgb(6, 80, 80);
-  border:2px solid rgb(17, 115, 139);
+  border: 2px solid rgb(17, 115, 139);
 }
 
-.calculate-btn{
+.calculate-btn {
   background-color: rgb(0, 102, 9);
-  border:2px solid rgb(21, 80, 6);
+  border: 2px solid rgb(21, 80, 6);
 }
 
-.calculate-btn:active{
+.calculate-btn:active {
   background-color: rgb(21, 80, 6);
-  border:2px solid rgb(0, 102, 9);
+  border: 2px solid rgb(0, 102, 9);
 }
 
-.flexbox{
+.flexbox {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
-  margin: 1.0em 0 1.0em 0;
+  margin: 1em 0 1em 0;
 }
 
-.flexbox-product{
+.flexbox-product {
   display: flex;
   width: 40%;
-  justify-content:flex-start;
-  margin: 1.0em 0 1.0em 0;
+  justify-content: flex-start;
+  margin: 1em 0 1em 0;
 }
 
 label {
-  margin: 0 20px 0 0; 
+  margin: 0 20px 0 0;
 }
 
 .inline {
@@ -151,4 +119,8 @@ label {
 
 .float-right {
   float: right;
+}
+
+#add {
+  background-color: rgb(243, 243, 243);
 }

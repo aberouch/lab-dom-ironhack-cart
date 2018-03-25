@@ -1,10 +1,10 @@
-function deleteItem(e){
-  console.log();
+function deleteItem(btnId) {
 
-
+  var child = document.getElementById(btnId);
+  child.parentNode.removeChild(child);
 }
 
-function getPriceByProduct(){
+function getPriceByProduct() {
 
   var price = "";
   var quantity = 0;
@@ -12,157 +12,173 @@ function getPriceByProduct(){
   var end = 1;
   var i = 1;
 
-  while(end != 0){
+  while (end != 0) {
 
-    price = document.getElementById("price-value-"+i).textContent;
-    console.log(price);
+    price = document.getElementById("price-value-" + i);
+    if (price != null) {
+      price = price.textContent;
 
-    price = price.split("");
-    price.splice(0, 1)
-    price = price.join('');
+      price = price.split("");
+      price.splice(0, 1)
+      price = price.join('');
 
-    console.log(price);
+      quantity = document.getElementById("quantity-" + i).value;
 
-    quantity = document.getElementById("quantity-"+i).value;
+      if (isNaN(quantity)) {
+        console.log("Incorrect quantity!");
+        alert("Invalid quantity!");
+        end = 0;
+      } else {
 
-    if(isNaN(quantity)){
-      console.log("Incorrect quantity!");
-      alert("Invalid quantity!");
+        totalPrice = parseFloat(price) * quantity;
+
+        document.getElementById('totalPrice-' + i).innerHTML = '$' + totalPrice.toFixed(2);
+        i++;
+      }
+    } else {
       end = 0;
     }
-    else{
 
-      totalPrice = parseFloat(price) * quantity;
-      
-      getTotalPrice(totalPrice);
+  }
+  getTotalPrice();
+}
 
-      document.getElementById('totalPrice-'+i).innerHTML = '$' + totalPrice.toFixed(2);
-      
-      console.log("Price is: " + price + " and qty is: " + quantity);
-      
-      if(price == null || quantity == null){
-        end = 0;
-      }
+function getTotalPrice() {
+  var totalPrice = 0;
+  var price = "";
+  var end = 1;
+  var i = 1;
+
+  while (end != 0) {
+
+
+    price = document.getElementById("totalPrice-" + i);
+
+    if (price != null) {
+      price = price.textContent;
+
+
+      price = price.split("");
+      price.splice(0, 1)
+      price = price.join('');
+
+      totalPrice += parseFloat(price);
       i++;
+    } else {
+      end = 0;
     }
   }
+
+  document.getElementById('total-price').innerHTML = "Total price: $" + totalPrice.toFixed(2);
 }
 
-var totalPriceOfProducts = 0;
-
-function getTotalPrice(price) {
-  
-  console.log(price);
-  totalPriceOfProducts += price;
-
-  document.getElementById('total-price').innerHTML = "$" + totalPriceOfProducts.toFixed(2);
-
-}
-
-function createNewRow(newElementId, parentElementId, elementType, className){
+function createNewRow(newElementId, parentElementId, elementType, className) {
 
   var newElement = document.createElement(elementType);
   var parentElement = document.getElementById(parentElementId);
-  
-  if(newElementId != ""){
+
+  if (newElementId != "") {
     newElement.id = newElementId;
   }
-  
+
   parentElement.appendChild(newElement);
 
-  if(className != ""){
+  if (className != "") {
     newElement.classList.add(className);
   }
 
 }
 
-function createNewRowElement(elementsArray){
+function createNewRowElement(elementsArray) {
 
-  elementsArray.forEach(function(element){
+  elementsArray.forEach(function (element) {
     createNewRow(element[0], element[1], element[2], element[3], element[0]);
   });
 }
 
-function createNewItem(){
+function createNewItem() {
 
-var productPriceTag = document.getElementById('input-price').value;
+  var productPriceTag = document.getElementById('input-price').value;
 
-//Replace comma for dot on price input
-if(productPriceTag.indexOf(",") != -1){
-  var indexComma = productPriceTag.indexOf(",");
-  productPriceTag = productPriceTag.split("");
-  productPriceTag.splice(indexComma, 1);
-  productPriceTag.splice(indexComma, 0, ".");
-  productPriceTag = productPriceTag.join("");
-}
-
-productPriceTag = parseFloat(productPriceTag).toFixed(2);
-var productNameTag = document.getElementById('input-name').value;
-productNameTag = String(productNameTag);
-
-if(isNaN(productPriceTag)){
-  console.log("Incorrect value");
-  alert("The price has an incorrect value.");
-}
-else if(productNameTag === ""){
-  console.log("Null string");
-  alert("The product needs a name!");
-}
-else{
-  
-  var findLastContainer = "";
-  var i=1;
-  var end = 1;
-  
-  while(end != 0){
-    var productName = "new-product-"+i;
-    
-    findLastContainer = document.getElementById(productName);
-    
-    if(findLastContainer === null){
-      end = 0;
-    }else{
-      i++;
-    }
+  //Replace comma for dot on price input
+  if (productPriceTag.indexOf(",") != -1) {
+    var indexComma = productPriceTag.indexOf(",");
+    productPriceTag = productPriceTag.split("");
+    productPriceTag.splice(indexComma, 1);
+    productPriceTag.splice(indexComma, 0, ".");
+    productPriceTag = productPriceTag.join("");
   }
-  
-  var arrayElements = [
-    //newElementId, parentElementId, elementType, className
-    ["new-product-"+i,"main-list", "div", "flexbox"],
-    ["product-" + i, "new-product-" + i, "div", "text-wrap"],
-    ["product-name-" + i, "product-" + i, "span", ""],
-    ["price-" + i, "new-product-" + i, "div", "min-width-70"],
-    ["price-value-" + i, "price-" + i, "span", ""],
-    ["qty-" + i, "new-product-" + i, "div", ""],
-    ["qty-label-" + i, "qty-" + i, "label", ""],
-    ["quantity-" + i, "qty-" + i, "input", ""],
-    ["total-" + i, "new-product-" + i, "div", "min-width-70"],
-    ["totalPrice-" + i, "total-" + i, "span", ""],
-    ["delete-" + i, "new-product-" + i, "div", ""],
-    ["btn-delete-" + i, "delete-" + i, "button", "btn-delete"],
-  ];
-  
-  createNewRowElement(arrayElements);
-  
-  document.getElementById('btn-delete-' + i).innerHTML = "Delete";
-  document.getElementById('qty-label-' + i).innerHTML = "QTY";
-  document.getElementById('totalPrice-' + i).innerHTML = "0";
-  document.getElementById('product-name-' + i).innerHTML = productNameTag;
-  document.getElementById('price-value-' + i).innerHTML = "$" + productPriceTag;
+
+  productPriceTag = parseFloat(productPriceTag).toFixed(2);
+  var productNameTag = document.getElementById('input-name').value;
+  productNameTag = String(productNameTag);
+
+  if (isNaN(productPriceTag)) {
+    console.log("Incorrect value");
+    alert("The price has an incorrect value.");
+  } else if (productNameTag === "") {
+    console.log("Null string");
+    alert("The product needs a name!");
+  } else {
+
+    var findLastContainer = "";
+    var i = 1;
+    var end = 1;
+
+    while (end != 0) {
+      var productName = "new-product-" + i;
+
+      findLastContainer = document.getElementById(productName);
+
+      if (findLastContainer === null) {
+        end = 0;
+      } else {
+        i++;
+      }
+    }
+
+    var arrayElements = [
+      //newElementId, parentElementId, elementType, className
+      ["new-product-" + i, "main-list", "div", "flexbox"],
+      ["product-" + i, "new-product-" + i, "div", "text-wrap"],
+      ["product-name-" + i, "product-" + i, "span", ""],
+      ["price-" + i, "new-product-" + i, "div", "min-width-70"],
+      ["price-value-" + i, "price-" + i, "span", ""],
+      ["qty-" + i, "new-product-" + i, "div", ""],
+      ["qty-label-" + i, "qty-" + i, "label", ""],
+      ["quantity-" + i, "qty-" + i, "input", ""],
+      ["total-" + i, "new-product-" + i, "div", "min-width-70"],
+      ["totalPrice-" + i, "total-" + i, "span", ""],
+      ["delete-" + i, "new-product-" + i, "div", ""]
+    ];
+
+    createNewRowElement(arrayElements);
+    createDeleteButton(i);
+
+    document.getElementById('btn-delete-' + i).innerHTML = "Delete";
+    document.getElementById('qty-label-' + i).innerHTML = "QTY";
+    document.getElementById('totalPrice-' + i).innerHTML = "0";
+    document.getElementById('product-name-' + i).innerHTML = productNameTag;
+    document.getElementById('price-value-' + i).innerHTML = "$" + productPriceTag;
+
+  }
 
 }
-  
+
+function createDeleteButton(i) {
+
+  var parentElement = document.getElementById("delete-" + i);
+
+  parentElement.innerHTML = '<button id="btn-delete-" onclick="deleteItem(this.parentNode.parentNode.id)" class="btn-delete"></button>';
+
+  var newId = document.getElementById("btn-delete-");
+  newId.id += i;
 }
 
-window.onload = function(){
+window.onload = function () {
   var calculatePriceButton = document.getElementById('calc-prices-button');
   var createItemButton = document.getElementById('new-item-create');
-  //var deleteButtons = document.getElementsByClassName('btn-delete');
-/*   var indexNewElement=0; */
+
   calculatePriceButton.onclick = getPriceByProduct;
   createItemButton.onclick = createNewItem;
-/*   var deleteButtons = document.getElementsByClassName("btn-delete");
-  for (var i = 0; i < deleteButtons.length; i++) {
-    deleteButtons[i].onclick = deleteItem;
-  } */
 };
