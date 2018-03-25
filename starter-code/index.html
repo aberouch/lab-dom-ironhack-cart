@@ -18,65 +18,30 @@
   </header>
 
   <main>
-    <div class="main-content" id="main-list">
-      <div class="flexbox" id="new-product-1">
-        <div id="product-1">
-          <span id="product-name">Product Name</span>
-        </div>
-        <div class="min-width-70" id="price-1">
-          <span id="priceValue-1">24.00</span>
-        </div>
-        <div id="qty-1">
-          <label>QTY</label><input id="quantity-1" value="" placeholder="0">
-        </div>
-        <div class="min-width-70" id="total-1">
-          <span id="totalPrice-1">0</span>
-        </div>
-        <div id="delete-1">
-          <button class="btn-delete" value="">Delete</button>
-        </div>
-      </div>
-  
-      <div class="flexbox " id="new-product-2">
-        <div id="product-2">
-          <span>Product Name</span>
-        </div>
-        <div class=" min-width-70" id="price-2">
-          <span id="priceValue-2">24.50</span>
-        </div>
-        <div id="qty-2">
-          <label>QTY</label><input id="quantity-2" value="" placeholder="0">
-        </div>
-        <div class=" min-width-70" id="total-2">
-          <span id="totalPrice-2">0</span>
-        </div>
-        <div id="delete-2">
-          <button class="btn-delete" value="">Delete</button>
-        </div>
-      </div>
-      </div>
+    <div class="main-content" id="main-list"></div>
   </main>
 
   <section id="add" class="main-content">
     <div class="flexbox" id="add-product">
       <div class="flexbox-product">
         <div class="container-input-product mr-input-product">
-          <input type="text" placeholder="Input name">
+          <input id="input-name" type="text" placeholder="Input name">
         </div>
         <div class="container-input-product">
-          <input type="text" placeholder="Input price">
+          <input id="input-price" type="text" placeholder="Input price">
         </div>
       </div>
       <div id="create-product">
-        <button id="new-item-create" class="btn-create">Create</button>
+        <button id="new-item-create" class="btn-create" onclick="createNewItem()">Create</button>
       </div>
     </div>
   </section>
 
   <footer>
       <div class="footer-content">
-        <button id="calc-prices-button" class="calculate-btn" onclick="createNewItem()" >Calculate price</button>
+        <button id="calc-prices-button" class="calculate-btn">Calculate price</button>
         <p>Total price</p>
+        <p id="total-price"></p>
       </div>
   </footer>
 </body>
